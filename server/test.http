@@ -1,0 +1,9 @@
+
+### Admin Login
+POST http://localhost:5000/api/admin/login
+Content-Type: application/json
+
+{
+  "email": "mdimteyaz270@gmail.com",
+  "password": "imtiyaz@934155"
+}

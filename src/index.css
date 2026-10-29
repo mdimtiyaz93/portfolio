@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==============================
+   THEME VARIABLES
+================================ */
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page-bg: #000000;
+  --page-text: #ffffff;
+
+  --card-bg: #111111;
+  --card-hover: #181818;
+
+  --muted-text: #a1a1aa;
+  --border-color: rgba(255, 255, 255, 0.1);
+
+  --navbar-bg: rgba(0, 0, 0, 0.85);
+  --input-bg: #111111;
+
+  --scrollbar-track: #0a0a0a;
+  --scrollbar-thumb: #4ade80;
+
+  --accent-color: #4ade80;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --page-bg: #f8fafc;
+  --page-text: #18181b;
+
+  --card-bg: #ffffff;
+  --card-hover: #f1f5f9;
+
+  --muted-text: #52525b;
+  --border-color: rgba(24, 24, 27, 0.12);
+
+  --navbar-bg: rgba(248, 250, 252, 0.9);
+  --input-bg: #ffffff;
+
+  --scrollbar-track: #e5e7eb;
+  --scrollbar-thumb: #16a34a;
+
+  --accent-color: #15803d;
+}
+
+/* ==============================
+   BASE STYLES
+================================ */
+
+@layer base {
+  html {
+    font-family: "Quicksand", sans-serif;
+    scroll-behavior: smooth;
+    background-color: var(--page-bg);
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-color: var(--page-bg);
+    color: var(--page-text);
+
+    overflow-x: hidden;
+
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  section,
+  header,
+  footer,
+  article {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  ::selection {
+    background-color: #4ade80;
+    color: #000000;
+  }
+
+  /* Scrollbar */
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--scrollbar-thumb), #166534);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #86efac, #15803d);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+}
+
+/* ==============================
+   REUSABLE THEME UTILITIES
+================================ */
+
+@layer utilities {
+  .theme-bg {
+    background-color: var(--page-bg);
+  }
+
+  .theme-text {
+    color: var(--page-text);
+  }
+
+  .theme-card {
+    background-color: var(--card-bg);
+  }
+
+  .theme-card:hover {
+    background-color: var(--card-hover);
+  }
+
+  .theme-muted {
+    color: var(--muted-text);
+  }
+
+  .theme-border {
+    border-color: var(--border-color);
+  }
+
+  .theme-navbar {
+    background-color: var(--navbar-bg);
+  }
+
+  .theme-input {
+    background-color: var(--input-bg);
+    color: var(--page-text);
+    border-color: var(--border-color);
+  }
+
+  .theme-accent {
+    color: var(--accent-color);
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* LIGHT MODE FIX */
+:root[data-theme="light"] .bg-black {
+  background-color: #f8fafc !important;
+}
+
+:root[data-theme="light"] .text-white {
+  color: #18181b !important;
+}
+
+:root[data-theme="light"] .text-zinc-400,
+:root[data-theme="light"] .text-zinc-500,
+:root[data-theme="light"] .text-zinc-300 {
+  color: #52525b !important;
+}
+
+:root[data-theme="light"] [class*="border-white/"] {
+  border-color: rgba(24, 24, 27, 0.12) !important;
+}
+
+:root[data-theme="light"] .bg-white {
+  background-color: #18181b !important;
+  color: #ffffff !important;
+}
+
+/* ==============================
+   ACCESSIBILITY
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
